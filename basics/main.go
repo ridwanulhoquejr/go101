@@ -13,7 +13,83 @@ import (
 
 var course = "Go 101" // package-level variable
 
+// a function which returns true if the provided argument number is even; otherwise false
+func isEven(n int) bool {
+	return n%2 == 0
+}
+
+// a funct which returns a interpolated string using fmt.Sprintf
+func greet(name string) string {
+	return fmt.Sprintf("Hello %s! Welcome to GO 101.", name)
+}
+
 func main() {
+
+	// Q1: Declare a constant called `maxRetries` with value 5.
+	//     Print it inside main().
+	// Ans:
+	const maxRetries = 5
+	fmt.Println(maxRetries) // 5
+
+	// Q2: Write a function `isEven(n int) bool` that returns true
+	//     if n is even. Call it from main() with a few test values.
+	// Ans:
+	test1 := isEven(10)
+	test2 := isEven(25)
+	test3 := isEven(47)
+
+	fmt.Printf("Test case 1 for argument 10: %v \n", test1) // true
+	fmt.Printf("Test case 2 for argument 25: %v \n", test2) // false
+	fmt.Printf("Test case 3 for argument 47: %v \n", test3) // false
+
+	// Q3: Write a function `greet(name string) string` that returns
+	//     "Hello, <name>! Welcome to Go 101." using fmt.Sprintf.
+	// Ans:
+	fmt.Println(greet("Ridwanul Hoque"))
+
+	// Q4: Use a for loop to print numbers 1 to 10. Skip even
+	//     numbers using `continue`.
+	// Ans:
+	for i := 0; i <= 10; i++ {
+		if isEven(i) {
+			continue
+		} else {
+			fmt.Println(i)
+		}
+	}
+
+	// Q5: Write a switch statement that takes a day string
+	//     ("Monday", "Saturday", etc.) and prints whether it's
+	//     a weekday or weekend.
+	// Ans:
+	day := "Monday"
+
+	switch day {
+	case "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday":
+		fmt.Println("weakday")
+	case "Friday", "Saturday":
+		fmt.Println("weekend")
+	default:
+		fmt.Println("If either of the above conditions are not matched, this block/case will be executed")
+	}
+
+	// Q6: What will this print? Why?
+	//     for i := 0; i < 3; i++ {
+	//         defer fmt.Println(i)
+	//     }
+	//     (Answer: 2, 1, 0 - defer is LIFO)
+	/*
+		Ans and Explanations:
+
+			It will prints: 2, 1, 0
+
+			Because, defer statement stores the codes in a Stack for later execution.
+			So deferred block is not executed immidietly rather it waits to finish other executions of the function first.
+
+			Since Stack used LIFO (Last In First Out) mechanism, the last deferred statement prints the first.
+			Thus, 2 prints first followed by 1 and 0.
+	*/
+
 	fmt.Println("Welcome to", course)
 
 	// Variables & short declaration
