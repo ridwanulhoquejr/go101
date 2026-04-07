@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strings"
 )
 
 // ============================================================
@@ -65,12 +64,10 @@ func main() {
 	day := "Monday"
 
 	switch day {
-	case "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday":
-		fmt.Println("weakday")
 	case "Friday", "Saturday":
 		fmt.Println("weekend")
 	default:
-		fmt.Println("If either of the above conditions are not matched, this block/case will be executed")
+		fmt.Println("weekday")
 	}
 
 	// Q6: What will this print? Why?
@@ -90,49 +87,49 @@ func main() {
 			Thus, 2 prints first followed by 1 and 0.
 	*/
 
-	fmt.Println("Welcome to", course)
+	// 	fmt.Println("Welcome to", course)
 
-	// Variables & short declaration
-	name := "Ada"
-	age := 25
-	isStudent := true
-	fmt.Printf("name=%s age=%d student=%t\n", name, age, isStudent)
+	// 	// Variables & short declaration
+	// 	name := "Ada"
+	// 	age := 25
+	// 	isStudent := true
+	// 	fmt.Printf("name=%s age=%d student=%t\n", name, age, isStudent)
 
-	// String formatting
-	greeting := fmt.Sprintf("Hello, %s!", strings.ToUpper(name))
-	fmt.Println(greeting)
+	// 	// String formatting
+	// 	greeting := fmt.Sprintf("Hello, %s!", strings.ToUpper(name))
+	// 	fmt.Println(greeting)
 
-	// Multiple return values + error handling
-	result, err := add(21, 21)
-	if err != nil {
-		fmt.Println("add error:", err)
-		return
-	}
-	fmt.Println("21 + 21 =", result)
+	// 	// Multiple return values + error handling
+	// 	result, err := add(21, 21)
+	// 	if err != nil {
+	// 		fmt.Println("add error:", err)
+	// 		return
+	// 	}
+	// 	fmt.Println("21 + 21 =", result)
 
-	// Switch statement (no break needed in Go)
-	switch {
-	case result > 50:
-		fmt.Println("Big number!")
-	case result == 42:
-		fmt.Println("The answer to everything!")
-	default:
-		fmt.Println("Just a number:", result)
-	}
+	// 	// Switch statement (no break needed in Go)
+	// 	switch {
+	// 	case result > 50:
+	// 		fmt.Println("Big number!")
+	// 	case result == 42:
+	// 		fmt.Println("The answer to everything!")
+	// 	default:
+	// 		fmt.Println("Just a number:", result)
+	// 	}
 
-	// For loop + defer (LIFO order)
-	for i := 0; i < 3; i++ {
-		defer fmt.Println("deferred:", i)
-		fmt.Println("loop iteration:", i)
-	}
-}
+	// 	// For loop + defer (LIFO order)
+	// 	for i := 0; i < 3; i++ {
+	// 		defer fmt.Println("deferred:", i)
+	// 		fmt.Println("loop iteration:", i)
+	// 	}
+	// }
 
-func add(a, b int) (int, error) {
-	sum := a + b
-	if sum < 0 {
-		return 0, fmt.Errorf("negative sum: %d", sum)
-	}
-	return sum, nil
+	//	func add(a, b int) (int, error) {
+	//		sum := a + b
+	//		if sum < 0 {
+	//			return 0, fmt.Errorf("negative sum: %d", sum)
+	//		}
+	//		return sum, nil
 }
 
 // ============================================================
