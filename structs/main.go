@@ -73,12 +73,9 @@ func main() {
 	fmt.Printf("*P will prints the value of x %v", *p)
 
 	// declation: pointer to
-	var y *int // y is a pointer to an int
+	var y *int // y is a pointer to an int; zero value is nil
 
-	if y == nil {
-		fmt.Println("Y is a nil pointer; initialized but not assigned any value in it ")
-	}
-	fmt.Println(y)
+	fmt.Printf("Y is %v (a declared *int has zero value nil)\n", y)
 	// likewise
 	// func (u *User) -> u is a pointer to a User
 
