@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // ============================================================
 // TOPIC: Structs - Composition, Embedding, Nested Structs
@@ -20,41 +22,94 @@ type Person struct {
 }
 
 type Employee struct {
-	Person       // embedded struct (field promotion)
+	Person // embedded struct (field promotion)
 	Role   string
 	Salary int
 }
 
+type User struct {
+	Name    string
+	Age     string
+	Address string
+}
+
+// here in reveiver method the User object is copied
+func (u *User) SetName(name string) error {
+
+	if name == "" {
+		return fmt.Errorf("Name is empty")
+	}
+	fmt.Printf("memeory address of user in rec method %p\n", u)
+
+	fmt.Printf("initial name %v\n", u.Name)
+
+	u.Name = name // override
+
+	fmt.Printf("updated name %v\n", u.Name)
+
+	return nil
+}
+
 func main() {
 	// Struct literal
-	person := Person{
-		Name: "Rob",
-		Age:  45,
-		Address: Address{
-			City:    "San Francisco",
-			Country: "USA",
-		},
+
+	// user := &User{
+	// 	Name:    "Ridwan",
+	// 	Age:     "12",
+	// 	Address: "Chattogram",
+	// }
+
+	// user.SetName("updated name")
+	// fmt.Printf("User name after update %v\n", user.Name)
+	// fmt.Printf("memeory address of user %p", user)
+
+	// pointer
+	x := "42"
+
+	p := &x // p = address of x
+	fmt.Printf("P holds an address of x %p", p)
+
+	// dereference: if we need to know about the value of a pointer variable (& address of)
+	fmt.Printf("*P will prints the value of x %v", *p)
+
+	// declation: pointer to
+	var y *int // y is a pointer to an int
+
+	if y == nil {
+		fmt.Println("Y is a nil pointer; initialized but not assigned any value in it ")
 	}
-	fmt.Printf("Person: %+v\n", person)
-	fmt.Println("City:", person.Address.City)
+	fmt.Println(y)
+	// likewise
+	// func (u *User) -> u is a pointer to a User
 
-	// Struct embedding - fields are promoted
-	employee := Employee{
-		Person: person,
-		Role:   "Engineer",
-		Salary: 160000,
-	}
+	// person := Person{
+	// 	Name: "Rob",
+	// 	Age:  45,
+	// 	Address: Address{
+	// 		City:    "San Francisco",
+	// 		Country: "USA",
+	// 	},
+	// }
+	// fmt.Printf("Person: %+v\n", person)
+	// fmt.Println("City:", person.Address.City)
 
-	// Access promoted fields directly
-	fmt.Println("Name:", employee.Name)           // promoted from Person
-	fmt.Println("City:", employee.Address.City)    // promoted through Person
-	fmt.Printf("Full: %s, %s, $%d\n", employee.Name, employee.Role, employee.Salary)
+	// // Struct embedding - fields are promoted
+	// employee := Employee{
+	// 	Person: person,
+	// 	Role:   "Engineer",
+	// 	Salary: 160000,
+	// }
 
-	// Structs are value types (copied on assignment)
-	p2 := person
-	p2.Name = "Alice"
-	fmt.Println("Original:", person.Name)  // still "Rob"
-	fmt.Println("Copy:", p2.Name)          // "Alice"
+	// // Access promoted fields directly
+	// fmt.Println("Name:", employee.Name)         // promoted from Person
+	// fmt.Println("City:", employee.Address.City) // promoted through Person
+	// fmt.Printf("Full: %s, %s, $%d\n", employee.Name, employee.Role, employee.Salary)
+
+	// // Structs are value types (copied on assignment)
+	// p2 := person
+	// p2.Name = "Alice"
+	// fmt.Println("Original:", person.Name) // still "Rob"
+	// fmt.Println("Copy:", p2.Name)         // "Alice"
 }
 
 // ============================================================

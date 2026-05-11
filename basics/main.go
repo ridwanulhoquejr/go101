@@ -22,6 +22,38 @@ func greet(name string) string {
 	return fmt.Sprintf("Hello %s! Welcome to GO 101.", name)
 }
 
+// IOTA
+type Weekday int8
+
+const (
+	Sunday Weekday = iota
+	_
+	Tuesday
+)
+
+/// defere functions
+
+// named return function -- return does include the defer execution
+func NamedReturnDeferFunc(param int64) (result int64) {
+	// defer func() { result = param + 10 }() // IIF
+	defer DeferTest()
+	return // would return param + 10 as sum
+}
+
+// Type return function -- return does not consider defer execution
+func TypedReturnDeferFunc(param int) int {
+	result := 0
+	// defer func() { result = param + 10 }() // IIF
+	defer DeferTest()
+	return result // would return 0
+}
+
+func DeferTest() {
+	fmt.Println(Sunday)
+	fmt.Println(Tuesday)
+	fmt.Println("defe func executes")
+}
+
 func main() {
 
 	// Q1: Declare a constant called `maxRetries` with value 5.
@@ -69,6 +101,9 @@ func main() {
 	default:
 		fmt.Println("weekday")
 	}
+
+	fmt.Printf("Named return defer func return value: %d\n", NamedReturnDeferFunc(1))
+	fmt.Printf("Type return defer func return value: %d\n", TypedReturnDeferFunc(1))
 
 	// Q6: What will this print? Why?
 	//     for i := 0; i < 3; i++ {
