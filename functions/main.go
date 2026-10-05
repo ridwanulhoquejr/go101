@@ -9,6 +9,13 @@ import "fmt"
 // --- EXAMPLE ---
 
 func main() {
+
+	// callback
+	double := func(n int) int { return n * 2 }
+	result := apply([]int{1, 2, 3}, double)
+
+	fmt.Println("call back double function resutl", result)
+	return
 	// Basic function call
 	sum := add(10, 32)
 	fmt.Println("sum:", sum)
@@ -32,7 +39,7 @@ func main() {
 	fmt.Println(counter()) // 3
 
 	// Anonymous function
-	double := func(n int) int { return n * 2 }
+	// double := func(n int) int { return n * 2 }
 	fmt.Println("double 5:", double(5))
 }
 
