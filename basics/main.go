@@ -56,54 +56,82 @@ func DeferTest() {
 
 func main() {
 
+	s := "héllo"
+
+	fmt.Println(s[0])
+
+	for i, r := range s {
+		fmt.Printf("string i %d, and v: %c\n", i, r)
+	}
+
+	// array
+	arr := [2]int{10, 20}
+	fmt.Println(arr)
+
+	for i, v := range arr {
+		fmt.Printf("arr index: %d, value: %+v\n", i, v)
+	}
+
+	// slice
+	sl := make([]int, 0, 5) // slice-> int type, len is 5 and capacity is 6
+	sl = append(sl, 1)
+
+	fmt.Println(sl)
+	fmt.Println(len(sl))
+	fmt.Println(cap(sl))
+
+	for i := 0; i < len(sl); i++ {
+		fmt.Printf("index: %d and vlaue: %d", i, sl[i])
+	}
+
 	// Q1: Declare a constant called `maxRetries` with value 5.
 	//     Print it inside main().
 	// Ans:
-	const maxRetries = 5
-	fmt.Println(maxRetries) // 5
+	// const maxRetries = 5
+	// fmt.Println(maxRetries) // 5
 
-	// Q2: Write a function `isEven(n int) bool` that returns true
-	//     if n is even. Call it from main() with a few test values.
-	// Ans:
-	test1 := isEven(10)
-	test2 := isEven(25)
-	test3 := isEven(47)
+	// // Q2: Write a function `isEven(n int) bool` that returns true
+	// //     if n is even. Call it from main() with a few test values.
+	// // Ans:
+	// test1 := isEven(10)
+	// test2 := isEven(25)
+	// test3 := isEven(47)
 
-	fmt.Printf("Test case 1 for argument 10: %v \n", test1) // true
-	fmt.Printf("Test case 2 for argument 25: %v \n", test2) // false
-	fmt.Printf("Test case 3 for argument 47: %v \n", test3) // false
+	// fmt.Printf("Test case 1 for argument 10: %v \n", test1) // true
+	// fmt.Printf("Test case 2 for argument 25: %v \n", test2) // false
+	// fmt.Printf("Test case 3 for argument 47: %v \n", test3) // false
 
-	// Q3: Write a function `greet(name string) string` that returns
-	//     "Hello, <name>! Welcome to Go 101." using fmt.Sprintf.
-	// Ans:
-	fmt.Println(greet("Ridwanul Hoque"))
+	// // Q3: Write a function `greet(name string) string` that returns
+	// //     "Hello, <name>! Welcome to Go 101." using fmt.Sprintf.
+	// // Ans:
+	// fmt.Println(greet("Ridwanul Hoque"))
 
-	// Q4: Use a for loop to print numbers 1 to 10. Skip even
-	//     numbers using `continue`.
-	// Ans:
-	for i := 0; i <= 10; i++ {
-		if isEven(i) {
-			continue
-		} else {
-			fmt.Println(i)
-		}
-	}
+	// // Q4: Use a for loop to print numbers 1 to 10. Skip even
+	// //     numbers using `continue`.
+	// // Ans:
+	// for i := 0; i <= 10; i++ {
+	// 	if isEven(i) {
+	// 		continue
+	// 	} else {
+	// 		fmt.Println(i)
+	// 	}
+	// }
 
-	// Q5: Write a switch statement that takes a day string
-	//     ("Monday", "Saturday", etc.) and prints whether it's
-	//     a weekday or weekend.
-	// Ans:
-	day := "Monday"
+	// // Q5: Write a switch statement that takes a day string
+	// //     ("Monday", "Saturday", etc.) and prints whether it's
+	// //     a weekday or weekend.
+	// // Ans:
+	// day := "Monday"
 
-	switch day {
-	case "Friday", "Saturday":
-		fmt.Println("weekend")
-	default:
-		fmt.Println("weekday")
-	}
+	// switch day {
+	// case "Friday", "Saturday":
+	// 	fmt.Println("weekend")
+	// default:
+	// 	fmt.Println("weekday")
+	// }
 
-	fmt.Printf("Named return defer func return value: %d\n", NamedReturnDeferFunc(1))
-	fmt.Printf("Type return defer func return value: %d\n", TypedReturnDeferFunc(1))
+	// fmt.Printf("Named return defer func return value: %d\n", NamedReturnDeferFunc(1))
+	// fmt.Printf("Type return defer func return value: %d\n", TypedReturnDeferFunc(1))
 
 	// Q6: What will this print? Why?
 	//     for i := 0; i < 3; i++ {
