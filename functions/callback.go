@@ -22,6 +22,5 @@ func apply(nums []int, fn func(int) int) []int {
 	for _, num := range nums {
 		out = append(out, fn(num))
 	}
-
 	return out
 }

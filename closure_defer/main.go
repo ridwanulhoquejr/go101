@@ -31,8 +31,7 @@ func slowOperation() {
 
 // defer block wihtout named return
 func deferWithOutNamedReturn(x int) int {
-	result := 0
-
+	result := 1
 	defer func() {
 		result += x
 	}()
@@ -43,12 +42,10 @@ func deferWithOutNamedReturn(x int) int {
 
 // defer block wiht named return
 func deferWithNamedReturn(x int) (result int) {
-	result = 0
-
+	result = 1
 	defer func() {
 		result += x
 	}()
-
 	// but when returns it sent with added value of x+result;
 	return
 }
@@ -74,31 +71,34 @@ func timed(name string, fn func()) {
 
 func main() {
 
-	// clousures
-	c1 := makeCounter()
-	fmt.Println(c1())
-	fmt.Println(c1())
-	fmt.Println(c1())
+	// Closure examples
+	// Test()
 
-	c2 := makeCounter()
-	fmt.Println(c2())
-	fmt.Printf("c1=%d\n c2=%d\n c2=%d", c1(), c2(), c2())
-	slowOperation()
+	// clousures
+	// c1 := makeCounter()
+	// fmt.Println(c1())
+	// fmt.Println(c1())
+	// fmt.Println(c1())
+
+	// c2 := makeCounter()
+	// fmt.Println(c2())
+	// fmt.Printf("c1=%d\n c2=%d\n c2=%d", c1(), c2(), c2())
+	// slowOperation()
 
 	// call the defferefunc
 	result1 := deferWithOutNamedReturn(15)
-	fmt.Printf("Deffered retun value from no named reutrn is : %d\n", result1)
+	fmt.Printf("Deffered retun value from no-named fucntion reutrn: %d\n", result1)
 
 	result2 := deferWithNamedReturn(15)
-	fmt.Printf("Deffered retun value is : %d", result2)
+	fmt.Printf("Deffered retun value from named return fucntion  : %d\n", result2)
 
 	// exercises
-	ac := makeAccumulator()
-	fmt.Println(ac(5))
-	fmt.Println(ac(5))
+	// ac := makeAccumulator()
+	// fmt.Println(ac(5))
+	// fmt.Println(ac(5))
 
-	timed("Slow operartion", func() {
-		time.Sleep(100 * time.Millisecond)
-	})
+	// timed("Slow operartion", func() {
+	// 	time.Sleep(100 * time.Millisecond)
+	// })
 
 }
